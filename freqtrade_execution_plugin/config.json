@@ -1,0 +1,124 @@
+{
+    "user_data_dir": "C:\\Users\\deborahwood\\VAMPst\\signal-detection-plugin\\freqtrade_execution_plugin\\user_data",
+    "max_open_trades": 15,
+    "stake_currency": "USDT",
+    "stake_amount": 100,
+    "fiat_display_currency": "USD",
+    
+    "dry_run": true,
+    "dry_run_wallet": 50000,
+    
+    "timeframe": "1m",
+    
+    "exchange": {
+        "name": "binance",
+        "key": "",
+        "secret": "",
+        "ccxt_config": {},
+        "ccxt_async_config": {},
+        "pair_whitelist": [
+            "BTC/USDT",
+            "ETH/USDT",
+            "ADA/USDT",
+            "DOT/USDT",
+            "SOL/USDT",
+            "MATIC/USDT",
+            "LINK/USDT",
+            "AVAX/USDT",
+            "UNI/USDT",
+            "ATOM/USDT",
+            "FTM/USDT",
+            "ALGO/USDT",
+            "XRP/USDT",
+            "LTC/USDT",
+            "BCH/USDT",
+            "ETC/USDT",
+            "XLM/USDT",
+            "VET/USDT",
+            "TRX/USDT",
+            "DOGE/USDT"
+        ],
+        "pair_blacklist": []
+    },
+    
+    "entry_pricing": {
+        "price_side": "other",
+        "use_order_book": true,
+        "order_book_top": 1,
+        "price_last_balance": 0.0,
+        "check_depth_of_market": {
+            "enabled": false,
+            "bids_to_ask_delta": 1
+        }
+    },
+    
+    "exit_pricing": {
+        "price_side": "other",
+        "use_order_book": true,
+        "order_book_top": 1
+    },
+    
+    "order_types": {
+        "entry": "market",
+        "exit": "market",
+        "emergency_exit": "market",
+        "force_exit": "market",
+        "force_entry": "market",
+        "stoploss": "market",
+        "stoploss_on_exchange": false,
+        "stoploss_on_exchange_interval": 60
+    },
+    
+    "order_time_in_force": {
+        "entry": "GTC",
+        "exit": "GTC"
+    },
+    
+    "pairlists": [
+        {
+            "method": "StaticPairList"
+        }
+    ],
+    
+    "edge": {
+        "enabled": false
+    },
+    
+    "telegram": {
+        "enabled": false,
+        "token": "",
+        "chat_id": ""
+    },
+    
+    "api_server": {
+        "enabled": true,
+        "listen_ip_address": "127.0.0.1",
+        "listen_port": 8080,
+        "verbosity": "error",
+        "enable_openapi": false,
+        "jwt_secret_key": "your-secret-key-here",
+        "CORS_origins": [],
+        "username": "freqtrade",
+        "password": "password"
+    },
+    
+    "bot_name": "ads-execution-bot",
+    
+    "initial_state": "running",
+    
+    "force_entry_enable": true,
+    
+    "internals": {
+        "process_throttle_secs": 1
+    },
+    
+    "strategy": "AdsExecutionStrategy",
+    "strategy_path": "./freqtrade_execution_plugin/",
+    
+    "redis_host": "localhost",
+    "redis_port": 6379,
+    "redis_db": 0,
+    
+    "dataformat_ohlcv": "json",
+    "dataformat_trades": "jsongz"
+}

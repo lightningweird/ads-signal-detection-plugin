@@ -1,0 +1,146 @@
+{
+  "test_timestamp": "2025-08-06T00:18:45.657615",
+  "total_anomalies": 116,
+  "statistics": {
+    "total": 116,
+    "by_severity": {
+      "low": 60,
+      "medium": 19,
+      "critical": 27,
+      "high": 10
+    },
+    "by_detector": {
+      "statistical_detector": 116
+    },
+    "by_metric": {
+      "error_rate": 22,
+      "cpu_usage": 48,
+      "memory_usage": 20,
+      "network_io": 30,
+      "disk_usage": 20,
+      "response_time": 41
+    },
+    "time_range": {
+      "first": "2025-08-06T00:18:54.908197",
+      "last": "2025-08-06T00:20:43.908197"
+    }
+  },
+  "recent_events": [
+    {
+      "timestamp": 1754403608.908197,
+      "severity": "low",
+      "confidence": 0.7771970861183631,
+      "affected_metrics": [
+        "cpu_usage",
+        "network_io"
+      ],
+      "z_scores": {
+        "cpu_usage": 1.8350598697623666,
+        "network_io": 3.2383211921598463
+      }
+    },
+    {
+      "timestamp": 1754403609.908197,
+      "severity": "low",
+      "confidence": 0.6584556896834884,
+      "affected_metrics": [
+        "cpu_usage",
+        "network_io"
+      ],
+      "z_scores": {
+        "cpu_usage": 2.7435653736812022,
+        "network_io": 2.726520653564717
+      }
+    },
+    {
+      "timestamp": 1754403610.908197,
+      "severity": "high",
+      "confidence": 1.0,
+      "affected_metrics": [
+        "cpu_usage",
+        "network_io"
+      ],
+      "z_scores": {
+        "cpu_usage": 3.3819781507498607,
+        "network_io": 4.211049645420747
+      }
+    },
+    {
+      "timestamp": 1754403611.908197,
+      "severity": "medium",
+      "confidence": 0.7565460654495355,
+      "affected_metrics": [
+        "network_io"
+      ],
+      "z_scores": {
+        "network_io": 3.7827303272476773
+      }
+    },
+    {
+      "timestamp": 1754403613.908197,
+      "severity": "low",
+      "confidence": 0.6918001616233564,
+      "affected_metrics": [
+        "disk_usage"
+      ],
+      "z_scores": {
+        "disk_usage": 3.4590008081167825
+      }
+    },
+    {
+      "timestamp": 1754403617.908197,
+      "severity": "high",
+      "confidence": 0.8846535575827194,
+      "affected_metrics": [
+        "disk_usage"
+      ],
+      "z_scores": {
+        "disk_usage": 4.423267787913597
+      }
+    },
+    {
+      "timestamp": 1754403619.908197,
+      "severity": "critical",
+      "confidence": 1.0,
+      "affected_metrics": [
+        "disk_usage"
+      ],
+      "z_scores": {
+        "disk_usage": 5.372337360083297
+      }
+    },
+    {
+      "timestamp": 1754403624.908197,
+      "severity": "medium",
+      "confidence": 0.7279289858407157,
+      "affected_metrics": [
+        "disk_usage"
+      ],
+      "z_scores": {
+        "disk_usage": 3.6396449292035786
+      }
+    },
+    {
+      "timestamp": 1754403642.908197,
+      "severity": "low",
+      "confidence": 0.6820914424686345,
+      "affected_metrics": [
+        "disk_usage"
+      ],
+      "z_scores": {
+        "disk_usage": 3.4104572123431725
+      }
+    },
+    {
+      "timestamp": 1754403643.908197,
+      "severity": "medium",
+      "confidence": 0.702877607728493,
+      "affected_metrics": [
+        "disk_usage"
+      ],
+      "z_scores": {
+        "disk_usage": 3.5143880386424646
+      }
+    }
+  ]
+}

@@ -1,0 +1,144 @@
+# Signal Detection Plugin Configuration for ads-anomaly-detection
+version: "2.0"
+environment: production
+
+# Detection Plugins Configuration
+detectors:
+  statistical_detector:
+    enabled: true
+    class: "src.detectors.statistical.StatisticalAnomalyDetector"
+    resource_requirements:
+      is_blocking: false
+      min_memory_gb: 0.5
+    config:
+      window_size: 100
+      std_dev_threshold: 3.0
+      min_samples: 10
+      metrics: ["cpu_usage", "memory_usage", "network_io", "disk_io"]
+      use_iqr: true
+      iqr_multiplier: 1.5
+      use_mad: true
+      mad_threshold: 3.0
+      ema_alpha: 0.1
+
+# Processing Pipeline Configuration
+pipeline:
+  # Batch processing settings
+  batch_size: 100
+  batch_timeout_ms: 1000
+  max_workers: 4
+  
+  # Processing mode
+  processing_mode: "parallel"  # Options: parallel, sequential
+  max_concurrent_detectors: 5
+  
+  # Backpressure configuration
+  backpressure:
+    enabled: true
+    strategy: "drop_oldest"
+    high_watermark: 8000
+    low_watermark: 2000
+    disk_spill_path: "/tmp/signal_detector/overflow"
+
+# Memory System Integration for ads-anomaly-detection
+memory_system:
+  interface: "direct_call"  # Options: direct_call, redis_pubsub
+  config:
+    batch_mode: true
+    max_batch_size: 500
+    flush_interval: 5.0
+  
+  # Alternative: Redis pub/sub for ads-anomaly-detection
+  # interface: "redis_pubsub"
+  # config:
+  #   host: localhost
+  #   port: 6379
+  #   channel: "ads_anomaly_events"
+  #   format: "json"
+
+# Resource Management
+resource_management:
+  gpu:
+    enabled: false
+    device_ids: [0]
+  
+  cpu:
+    max_workers: 10
+    affinity_enabled: false
+  
+  memory:
+    max_usage_gb: 8.0
+    gc_threshold: 0.8
+
+# Observability
+observability:
+  metrics:
+    enabled: true
+    port: 9090
+    endpoint: "/metrics"
+    collector: "prometheus"
+  
+  tracing:
+    enabled: false
+    jaeger_endpoint: "http://localhost:14268/api/traces"
+  
+  logging:
+    level: INFO
+    format: "json"
+    file: "logs/signal-detector.log"
+
+# Health Checks
+health_checks:
+  enabled: true
+  port: 8080
+  endpoint: "/health"
+  checks:
+    - detector_health
+    - memory_interface
+    - resource_usage
+
+# Performance Tuning
+performance:
+  event_loop_policy: "uvloop"
+  gc_collect_interval: 300
+  profiling:
+    enabled: false
+    output_dir: "profiles/"
+  
+  # Optimizations for ads-anomaly-detection
+  batch_optimization:
+    enabled: true
+    target_batch_size: 100
+    max_wait_time_ms: 100
+
+# Integration with ads-anomaly-detection
+ads_integration:
+  # Metric name mappings
+  metric_mappings:
+    cpu_usage: "system.cpu.usage"
+    memory_usage: "system.memory.usage"
+    network_io: "system.network.io"
+    disk_io: "system.disk.io"
+  
+  # Severity mappings
+  severity_mappings:
+    low: "LOW"
+    medium: "MEDIUM"
+    high: "HIGH"
+    critical: "CRITICAL"
+  
+  # Additional metadata to include
+  metadata_enrichment:
+    - "hostname"
+    - "environment"
+    - "service_name"
+
+# Feature Flags
+features:
+  enable_hot_reload: true
+  enable_dynamic_config: true
+  enable_circuit_breaker: true
+  enable_adaptive_sampling: true
+  enable_auto_scaling: false
+  enable_model_updates: true
+  enable_drift_detection: true
